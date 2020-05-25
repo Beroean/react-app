@@ -9,7 +9,7 @@ import {
 
 const styles = (theme: Theme) =>
   createStyles({
-    root: { color: "red" },
+    root: { color: "red", marginTop: "10px" },
   });
 
 function Bar(props: IBarProps) {

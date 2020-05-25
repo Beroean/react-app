@@ -6,12 +6,19 @@ import {
   withStyles,
   Typography,
 } from "@material-ui/core";
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  VictoryTheme,
+  VictoryContainer,
+} from "victory";
 
 const styles = (theme: Theme) =>
   createStyles({
-    root: { maxHeight: "100vh" },
-    heading: { color: "blue" },
+    root: { display: "flex", flexWrap: "wrap", justifyContent: "center" },
+    heading: { color: "blue", marginTop: "10px" },
+    chartContainer: { width: 500, height: 500 },
   });
 
 function Home(props: IHomeProps) {
@@ -23,18 +30,40 @@ function Home(props: IHomeProps) {
     { quarter: 4, earnings: 19000 },
   ];
   return (
-    <div className={classes.root}>
-      <Typography className={classes.heading} variant="h2" gutterBottom>
+    <div>
+      <Typography className={classes.heading} variant="h2">
         Home Page
       </Typography>
-      <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-        <VictoryAxis
-          tickValues={[1, 2, 3, 4]}
-          tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
-        />
-        <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
-        <VictoryBar data={data} x="quarter" y="earnings" height={100} />
-      </VictoryChart>
+      <div className={classes.root}>
+        <VictoryChart
+          theme={VictoryTheme.material}
+          domainPadding={30}
+          containerComponent={<VictoryContainer responsive={false} />}
+          height={400}
+          width={500}
+        >
+          <VictoryAxis
+            tickValues={[1, 2, 3, 4]}
+            tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
+          />
+          <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
+          <VictoryBar data={data} x="quarter" y="earnings" />
+        </VictoryChart>
+        <VictoryChart
+          theme={VictoryTheme.material}
+          domainPadding={30}
+          containerComponent={<VictoryContainer responsive={false} />}
+          height={400}
+          width={500}
+        >
+          <VictoryAxis
+            tickValues={[1, 2, 3, 4]}
+            tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
+          />
+          <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
+          <VictoryBar data={data} x="quarter" y="earnings" />
+        </VictoryChart>
+      </div>
     </div>
   );
 }

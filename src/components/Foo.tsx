@@ -9,7 +9,7 @@ import {
 
 const styles = (theme: Theme) =>
   createStyles({
-    root: { color: "green" },
+    root: { color: "green", marginTop: "10px" },
   });
 
 function Foo(props: IFooProps) {
