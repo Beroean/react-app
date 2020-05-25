@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
-import { Home, Foo, Bar } from './components/pages';
+import Home from './components/home/home';
+import Foo from './components/home/foo';
+import Bar from './components/home/bar';
 import './App.css';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
