@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   WithStyles,
   createStyles,
@@ -14,6 +14,7 @@ import {
   VictoryContainer,
 } from "victory";
 import footballService from "../services/footballService";
+import { ITeamStanding, IStandingsTable, ITeam } from "../models/teamStanding";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -24,18 +25,14 @@ const styles = (theme: Theme) =>
 
 function Home(props: IHomeProps) {
   const { classes } = props;
-  const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 },
-  ];
+  const [standingsTable, setStandingsTable] = useState<IStandingsTable>();
   useEffect(() => {
     loadCompetetionData();
   }, []);
 
   async function loadCompetetionData() {
     const data = await footballService.getStandings();
+    setStandingsTable(data);
   }
 
   return (
@@ -43,36 +40,30 @@ function Home(props: IHomeProps) {
       <Typography className={classes.heading} variant="h2">
         Home Page
       </Typography>
-      <div className={classes.root}>
-        <VictoryChart
-          theme={VictoryTheme.material}
-          domainPadding={30}
-          containerComponent={<VictoryContainer responsive={false} />}
-          height={400}
-          width={500}
-        >
-          <VictoryAxis
-            tickValues={[1, 2, 3, 4]}
-            tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
-          />
-          <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
-          <VictoryBar data={data} x="quarter" y="earnings" />
-        </VictoryChart>
-        <VictoryChart
-          theme={VictoryTheme.material}
-          domainPadding={30}
-          containerComponent={<VictoryContainer responsive={false} />}
-          height={400}
-          width={500}
-        >
-          <VictoryAxis
-            tickValues={[1, 2, 3, 4]}
-            tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
-          />
-          <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
-          <VictoryBar data={data} x="quarter" y="earnings" />
-        </VictoryChart>
-      </div>
+      {standingsTable && (
+        <div className={classes.root}>
+          <VictoryChart
+            theme={VictoryTheme.material}
+            domainPadding={30}
+            containerComponent={<VictoryContainer responsive={false} />}
+            height={400}
+            width={700}
+          >
+            <VictoryAxis
+              tickFormat={(team) => {
+                return "A team";
+              }}
+            />
+            <VictoryAxis dependentAxis />
+            <VictoryBar
+              data={standingsTable!.table}
+              x="position"
+              y="goalsFor"
+              labels={({ datum }) => datum.team.name}
+            />
+          </VictoryChart>
+        </div>
+      )}
     </div>
   );
 }
