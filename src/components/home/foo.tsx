@@ -1,10 +1,20 @@
 import React from 'react';
+import { WithStyles, createStyles, Theme, withStyles, Typography } from '@material-ui/core';
 
+const styles = (theme: Theme) => createStyles({
+    root: { color: 'green' },
+});
 
-function Foo() {
+function Foo(props: IFooProps) {
+    const { classes } = props;
     return (
-        <h1>Foo Page</h1>
+        <Typography className={classes.root} variant="h2" gutterBottom>
+            Foo Page
+        </Typography>
     );
 }
 
-export default Foo;
+interface IFooProps extends WithStyles<typeof styles> {
+}
+
+export default withStyles(styles)(Foo);

@@ -1,10 +1,20 @@
 import React from 'react';
+import { WithStyles, createStyles, Theme, withStyles, Typography } from '@material-ui/core';
 
+const styles = (theme: Theme) => createStyles({
+    root: { color: 'red' },
+});
 
-function Bar() {
+function Bar(props: IBarProps) {
+    const { classes } = props;
     return (
-        <h1>Bar Page</h1>
+        <Typography className={classes.root} variant="h2" gutterBottom>
+            Bar Page
+        </Typography>
     );
 }
 
-export default Bar;
+interface IBarProps extends WithStyles<typeof styles> {
+}
+
+export default withStyles(styles)(Bar);

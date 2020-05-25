@@ -29,9 +29,15 @@ function App() {
                 />
               </Tabs>
               <Switch>
-                <Route exact path={allTabs[0]} component={Home} />
-                <Route path={allTabs[1]} component={Foo} />
-                <Route path={allTabs[2]} component={Bar} />
+                <Route exact path={allTabs[0]}>
+                  <Home />
+                </Route>
+                <Route path={allTabs[1]}>
+                  <Foo />
+                </Route>
+                <Route path={allTabs[2]}>
+                  <Bar />
+                </Route>
               </Switch>
             </Fragment>
           )}
