@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   WithStyles,
   createStyles,
@@ -13,11 +13,12 @@ import {
   VictoryTheme,
   VictoryContainer,
 } from "victory";
+import footballService from "../services/footballService";
 
 const styles = (theme: Theme) =>
   createStyles({
     root: { display: "flex", flexWrap: "wrap", justifyContent: "center" },
-    heading: { color: "blue", marginTop: "10px" },
+    heading: { color: "grey", marginTop: "10px" },
     chartContainer: { width: 500, height: 500 },
   });
 
@@ -29,6 +30,14 @@ function Home(props: IHomeProps) {
     { quarter: 3, earnings: 14250 },
     { quarter: 4, earnings: 19000 },
   ];
+  useEffect(() => {
+    loadCompetetionData();
+  }, []);
+
+  async function loadCompetetionData() {
+    const data = await footballService.getStandings();
+  }
+
   return (
     <div>
       <Typography className={classes.heading} variant="h2">

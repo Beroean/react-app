@@ -8,7 +8,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 function App() {
-  const allTabs = ["/", "/foo", "/bar"];
+  const allTabs = ["/", "/esp", "/epl"];
   return (
     <BrowserRouter>
       <div className="App">
@@ -17,16 +17,21 @@ function App() {
           render={({ location }) => (
             <Fragment>
               <Tabs value={location.pathname} centered>
-                <Tab label="Home" value="/" component={Link} to={allTabs[0]} />
                 <Tab
-                  label="Foo"
-                  value="/foo"
+                  label="Bundesliga"
+                  value="/"
+                  component={Link}
+                  to={allTabs[0]}
+                />
+                <Tab
+                  label="La Liga"
+                  value="/esp"
                   component={Link}
                   to={allTabs[1]}
                 />
                 <Tab
-                  label="Bar"
-                  value="/bar"
+                  label="Premier League"
+                  value="/epl"
                   component={Link}
                   to={allTabs[2]}
                 />
