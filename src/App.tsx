@@ -1,16 +1,14 @@
-import React, { Fragment } from 'react';
-import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
-import Home from './components/home/home';
-import Foo from './components/home/foo';
-import Bar from './components/home/bar';
-import './App.css';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
+import React, { Fragment } from "react";
+import { Route, Link, Switch, BrowserRouter } from "react-router-dom";
+import Home from "./components/Home";
+import Foo from "./components/Foo";
+import Bar from "./components/Bar";
+import "./App.css";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 function App() {
-
-  const allTabs = ['/', '/foo', '/bar'];
+  const allTabs = ["/", "/foo", "/bar"];
   return (
     <BrowserRouter>
       <div className="App">
@@ -20,7 +18,12 @@ function App() {
             <Fragment>
               <Tabs value={location.pathname} centered>
                 <Tab label="Home" value="/" component={Link} to={allTabs[0]} />
-                <Tab label="Foo" value="/foo" component={Link} to={allTabs[1]} />
+                <Tab
+                  label="Foo"
+                  value="/foo"
+                  component={Link}
+                  to={allTabs[1]}
+                />
                 <Tab
                   label="Bar"
                   value="/bar"
