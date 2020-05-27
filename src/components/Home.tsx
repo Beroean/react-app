@@ -14,18 +14,43 @@ import {
   VictoryContainer,
 } from "victory";
 import footballService from "../services/footballService";
-import { ITeamStanding, IStandingsTable, ITeam } from "../models/teamStanding";
+import { IStandingsTable, columnDefs } from "../models/teamStanding";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+import { GridReadyEvent } from "ag-grid-community";
 
 const styles = (theme: Theme) =>
   createStyles({
-    root: { display: "flex", flexWrap: "wrap", justifyContent: "center" },
-    heading: { color: "grey", marginTop: "10px" },
+    chartRoot: { display: "flex", flexWrap: "wrap", justifyContent: "center" },
+    gridRoot: {
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      overflow: "hidden",
+      margin: 10,
+      "& .ag-root-wrapper": {
+        width: "1584px",
+      },
+    },
+    heading: {
+      color: "grey",
+      marginTop: "10px",
+      justifyContent: "center",
+      alignItems: "center",
+      display: "flex",
+    },
     chartContainer: { width: 500, height: 500 },
   });
 
 function Home(props: IHomeProps) {
   const { classes } = props;
   const [standingsTable, setStandingsTable] = useState<IStandingsTable>();
+  const defs = columnDefs;
+  const defaultColDef = {
+    flex: 1,
+    minWidth: 75,
+  };
   useEffect(() => {
     loadCompetetionData();
   }, []);
@@ -35,13 +60,27 @@ function Home(props: IHomeProps) {
     setStandingsTable(data);
   }
 
+  function onGridReady(params: GridReadyEvent) {}
+
   return (
     <div>
       <Typography className={classes.heading} variant="h2">
         Home Page
       </Typography>
       {standingsTable && (
-        <div className={classes.root}>
+        <div className={classes.gridRoot}>
+          <AgGridReact
+            rowData={standingsTable!.table}
+            columnDefs={defs}
+            defaultColDef={defaultColDef}
+            onGridReady={onGridReady}
+            rowHeight={35}
+            gridAutoHeight
+          />
+        </div>
+      )}
+      {false && (
+        <div className={classes.chartRoot}>
           <VictoryChart
             theme={VictoryTheme.material}
             domainPadding={30}

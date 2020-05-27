@@ -35,6 +35,7 @@ export interface ITeamStanding {
   playedGames: number;
   points: number;
   position: number;
+  won: number;
   team: ITeam;
 }
 
@@ -43,3 +44,37 @@ export interface ITeam {
   name: string;
   id: number;
 }
+
+export const columnDefs = [
+  { headerName: "Draw", field: "draw" },
+  { headerName: "Goal Difference", field: "goalDifference" },
+  { headerName: "Goals Against", field: "goalsAgainst" },
+  { headerName: "Lost", field: "lost" },
+  { headerName: "Played Games", field: "playedGames" },
+  { headerName: "Points", field: "points" },
+  { headerName: "Position", field: "position" },
+  { headerName: "Won", field: "won" },
+  {
+    headerName: "Name",
+    pinned: "left",
+    valueGetter: function (params: any) {
+      return params.data.team.name;
+    },
+  },
+  {
+    headerName: "Crest",
+    pinned: "left",
+    valueGetter: function (params: any) {
+      return params.data.team.crestUrl;
+    },
+    cellRenderer: function (params: any) {
+      return (
+        '<img alt="' +
+        params.data.team.name +
+        '" width="30" height="30" src="' +
+        params.data.team.crestUrl +
+        '" />'
+      );
+    },
+  },
+];
