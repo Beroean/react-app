@@ -68,7 +68,7 @@ function Home(props: IHomeProps) {
         Bundesliga
       </Typography>
       {standingsTable && (
-        <div className={classes.gridRoot}>
+        <div className={[classes.gridRoot, "ag-theme-alpine-dark"].join(" ")}>
           <AgGridReact
             rowData={standingsTable!.table}
             columnDefs={defs}
