@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  WithStyles,
-  createStyles,
-  Theme,
-  withStyles,
-  Typography,
-} from "@material-ui/core";
+import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
 import {
   VictoryBar,
   VictoryChart,
@@ -28,22 +22,16 @@ const styles = (theme: Theme) =>
       width: "100%",
       display: "flex",
       overflow: "hidden",
-      margin: 10,
+      marginTop: 10,
       "& .ag-root-wrapper": {
-        width: "1584px",
+        width: "1583px",
+        display: "flex",
       },
-    },
-    heading: {
-      color: "grey",
-      marginTop: "10px",
-      justifyContent: "center",
-      alignItems: "center",
-      display: "flex",
     },
     chartContainer: { width: 500, height: 500 },
   });
 
-function Home(props: IHomeProps) {
+function Bundesliga(props: IBundesligaProps) {
   const { classes } = props;
   const [standingsTable, setStandingsTable] = useState<IStandingsTable>();
   const defs = columnDefs;
@@ -56,17 +44,13 @@ function Home(props: IHomeProps) {
   }, []);
 
   async function loadCompetetionData() {
-    const data = await footballService.getStandings();
+    const data = await footballService.getGermanStandings();
     setStandingsTable(data);
   }
 
-  // TODO: Fix grid width. Remove hardcoded width.
-  // TODO: Add filtering and sorting
+  // TODO: Fix grid width. Remove hardcoded width
   return (
     <div>
-      <Typography className={classes.heading} variant="h2">
-        Bundesliga
-      </Typography>
       {standingsTable && (
         <div className={[classes.gridRoot, "ag-theme-alpine-dark"].join(" ")}>
           <AgGridReact
@@ -106,6 +90,6 @@ function Home(props: IHomeProps) {
   );
 }
 
-interface IHomeProps extends WithStyles<typeof styles> {}
+interface IBundesligaProps extends WithStyles<typeof styles> {}
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(Bundesliga);

@@ -46,7 +46,15 @@ export interface ITeam {
 }
 
 export const columnDefs = [
-  { headerName: "Draw", field: "draw", sortable: true, filter: true },
+  { headerName: "Points", field: "points", sortable: true, filter: true },
+  { headerName: "Won", field: "won", sortable: true, filter: true },
+  { headerName: "Lost", field: "lost", sortable: true, filter: true },
+  {
+    headerName: "Draw",
+    field: "draw",
+    sortable: true,
+    filter: true,
+  },
   {
     headerName: "Goal Difference",
     field: "goalDifference",
@@ -59,16 +67,14 @@ export const columnDefs = [
     sortable: true,
     filter: true,
   },
-  { headerName: "Lost", field: "lost", sortable: true, filter: true },
+
   {
     headerName: "Played Games",
     field: "playedGames",
     sortable: true,
     filter: true,
   },
-  { headerName: "Points", field: "points", sortable: true, filter: true },
-  { headerName: "Position", field: "position", sortable: true, filter: true },
-  { headerName: "Won", field: "won", sortable: true, filter: true },
+
   {
     headerName: "Name",
     pinned: "left",

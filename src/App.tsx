@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { Route, Link, Switch, BrowserRouter } from "react-router-dom";
-import Home from "./components/Home";
-import Foo from "./components/Foo";
-import Bar from "./components/Bar";
+import Bundesliga from "./components/Bundesliga";
+import PremierLeague from "./components/PremierLeague";
+import LaLiga from "./components/LaLiga";
 import "./App.css";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -38,13 +38,13 @@ function App() {
               </Tabs>
               <Switch>
                 <Route exact path={allTabs[0]}>
-                  <Home />
+                  <Bundesliga />
                 </Route>
                 <Route path={allTabs[1]}>
-                  <Foo />
+                  <LaLiga />
                 </Route>
                 <Route path={allTabs[2]}>
-                  <Bar />
+                  <PremierLeague />
                 </Route>
               </Switch>
             </Fragment>
