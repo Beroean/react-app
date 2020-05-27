@@ -60,12 +60,12 @@ function Home(props: IHomeProps) {
     setStandingsTable(data);
   }
 
-  function onGridReady(params: GridReadyEvent) {}
-
+  // TODO: Fix grid width. Remove hardcoded width.
+  // TODO: Add filtering and sorting
   return (
     <div>
       <Typography className={classes.heading} variant="h2">
-        Home Page
+        Bundesliga
       </Typography>
       {standingsTable && (
         <div className={classes.gridRoot}>
@@ -73,7 +73,6 @@ function Home(props: IHomeProps) {
             rowData={standingsTable!.table}
             columnDefs={defs}
             defaultColDef={defaultColDef}
-            onGridReady={onGridReady}
             rowHeight={35}
             gridAutoHeight
           />
