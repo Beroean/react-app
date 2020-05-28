@@ -20,7 +20,6 @@ const styles = (theme: Theme) =>
       height: "100%",
       width: "100%",
       display: "flex",
-      overflow: "hidden",
       marginTop: 10,
     },
     chartContainer: { width: 500, height: 500 },
@@ -43,14 +42,13 @@ function Bundesliga(props: IBundesligaProps) {
     setStandingsTable(data);
   }
 
-  // TODO: Fix grid width. Remove hardcoded width
   // TODO: Add mobile version of grid
   // TODO: Move the standings grid to its own component instead of repeating it in the three pages
   // TODO: Add vertical tabs within each league for different views: https://material-ui.com/components/tabs/#vertical-tabs
   // Top 10 scorers bar chart
   // Comparison of team metrics interactive chart
   return (
-    <div>
+    <div className={classes.gridRoot}>
       {standingsTable && (
         <div className={[classes.gridRoot, "ag-theme-alpine-dark"].join(" ")}>
           <AgGridReact

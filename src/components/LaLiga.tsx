@@ -36,7 +36,7 @@ function LaLiga(props: ILaLiga) {
     setStandingsTable(data);
   }
   return (
-    <div>
+    <div className={classes.gridRoot}>
       {standingsTable && (
         <div className={[classes.gridRoot, "ag-theme-alpine-dark"].join(" ")}>
           <AgGridReact

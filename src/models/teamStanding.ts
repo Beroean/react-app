@@ -46,47 +46,8 @@ export interface ITeam {
 }
 
 export const columnDefs = [
-  { headerName: "Points", field: "points", sortable: true, filter: true },
-  { headerName: "Won", field: "won", sortable: true, filter: true },
-  { headerName: "Lost", field: "lost", sortable: true, filter: true },
-  {
-    headerName: "Draw",
-    field: "draw",
-    sortable: true,
-    filter: true,
-  },
-  {
-    headerName: "Goal Difference",
-    field: "goalDifference",
-    sortable: true,
-    filter: true,
-  },
-  {
-    headerName: "Goals Against",
-    field: "goalsAgainst",
-    sortable: true,
-    filter: true,
-  },
-
-  {
-    headerName: "Played Games",
-    field: "playedGames",
-    sortable: true,
-    filter: true,
-  },
-
-  {
-    headerName: "Name",
-    pinned: "left",
-    valueGetter: function (params: any) {
-      return params.data.team.name;
-    },
-    sortable: true,
-    filter: true,
-  },
   {
     headerName: "Crest",
-    pinned: "left",
     valueGetter: function (params: any) {
       return params.data.team.crestUrl;
     },
@@ -99,5 +60,57 @@ export const columnDefs = [
         '" />'
       );
     },
+    maxWidth: 70,
+  },
+  {
+    headerName: "Name",
+    valueGetter: function (params: any) {
+      return params.data.team.name;
+    },
+    sortable: true,
+    filter: true,
+  },
+  {
+    headerName: "Pts",
+    field: "points",
+    sortable: true,
+    filter: true,
+    maxWidth: 75,
+  },
+  { headerName: "W", field: "won", sortable: true, filter: true, maxWidth: 75 },
+  {
+    headerName: "L",
+    field: "lost",
+    sortable: true,
+    filter: true,
+    maxWidth: 75,
+  },
+  {
+    headerName: "D",
+    field: "draw",
+    sortable: true,
+    filter: true,
+    maxWidth: 75,
+  },
+  {
+    headerName: "GD",
+    field: "goalDifference",
+    sortable: true,
+    filter: true,
+    maxWidth: 75,
+  },
+  {
+    headerName: "GA",
+    field: "goalsAgainst",
+    sortable: true,
+    filter: true,
+    maxWidth: 75,
+  },
+  {
+    headerName: "MP",
+    field: "playedGames",
+    sortable: true,
+    filter: true,
+    maxWidth: 75,
   },
 ];
