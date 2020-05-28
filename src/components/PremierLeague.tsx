@@ -15,10 +15,6 @@ const styles = (theme: Theme) =>
       display: "flex",
       overflow: "hidden",
       marginTop: 10,
-      "& .ag-root-wrapper": {
-        width: "1583px",
-        display: "flex",
-      },
     },
     chartContainer: { width: 500, height: 500 },
   });

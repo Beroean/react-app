@@ -12,7 +12,6 @@ import { IStandingsTable, columnDefs } from "../models/teamStanding";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { GridReadyEvent } from "ag-grid-community";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -23,10 +22,6 @@ const styles = (theme: Theme) =>
       display: "flex",
       overflow: "hidden",
       marginTop: 10,
-      "& .ag-root-wrapper": {
-        width: "1583px",
-        display: "flex",
-      },
     },
     chartContainer: { width: 500, height: 500 },
   });
@@ -49,6 +44,11 @@ function Bundesliga(props: IBundesligaProps) {
   }
 
   // TODO: Fix grid width. Remove hardcoded width
+  // TODO: Add mobile version of grid
+  // TODO: Move the standings grid to its own component instead of repeating it in the three pages
+  // TODO: Add vertical tabs within each league for different views: https://material-ui.com/components/tabs/#vertical-tabs
+  // Top 10 scorers bar chart
+  // Comparison of team metrics interactive chart
   return (
     <div>
       {standingsTable && (
