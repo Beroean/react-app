@@ -1,4 +1,5 @@
 import { Url } from "url";
+import { ColDef } from "ag-grid-community";
 
 export interface IStandingsResponse {
   competition: ICompetition;
@@ -45,7 +46,7 @@ export interface ITeam {
   id: number;
 }
 
-export const columnDefs = [
+export const columnDefs: ColDef[] = [
   {
     headerName: "Crest",
     valueGetter: function (params: any) {
@@ -60,7 +61,7 @@ export const columnDefs = [
         '" />'
       );
     },
-    maxWidth: 70,
+    maxWidth: 40,
   },
   {
     headerName: "Name",
@@ -75,42 +76,42 @@ export const columnDefs = [
     field: "points",
     sortable: true,
     filter: true,
-    maxWidth: 75,
+    maxWidth: 38,
   },
-  { headerName: "W", field: "won", sortable: true, filter: true, maxWidth: 75 },
+  { headerName: "W", field: "won", sortable: true, filter: true, maxWidth: 35 },
   {
     headerName: "L",
     field: "lost",
     sortable: true,
     filter: true,
-    maxWidth: 75,
+    maxWidth: 35,
   },
   {
     headerName: "D",
     field: "draw",
     sortable: true,
     filter: true,
-    maxWidth: 75,
+    maxWidth: 35,
   },
   {
     headerName: "GD",
     field: "goalDifference",
     sortable: true,
     filter: true,
-    maxWidth: 75,
+    maxWidth: 38,
   },
   {
     headerName: "GA",
     field: "goalsAgainst",
     sortable: true,
     filter: true,
-    maxWidth: 75,
+    maxWidth: 38,
   },
   {
     headerName: "MP",
     field: "playedGames",
     sortable: true,
     filter: true,
-    maxWidth: 75,
+    maxWidth: 40,
   },
 ];

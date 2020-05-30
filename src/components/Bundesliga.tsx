@@ -21,6 +21,14 @@ const styles = (theme: Theme) =>
       width: "100%",
       display: "flex",
       marginTop: 10,
+      "& .ag-theme-alpine-dark .ag-header-cell": {
+        paddingLeft: 1,
+        paddingRight: 1,
+      },
+      "& .ag-theme-alpine-dark .ag-cell": {
+        paddingLeft: 1,
+        paddingRight: 1,
+      },
     },
     chartContainer: { width: 500, height: 500 },
   });

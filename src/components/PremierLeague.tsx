@@ -8,15 +8,21 @@ import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 const styles = (theme: Theme) =>
   createStyles({
-    chartRoot: { display: "flex", flexWrap: "wrap", justifyContent: "center" },
     gridRoot: {
       height: "100%",
       width: "100%",
       display: "flex",
       overflow: "hidden",
       marginTop: 10,
+      "& .ag-theme-alpine-dark .ag-header-cell": {
+        paddingLeft: 1,
+        paddingRight: 1,
+      },
+      "& .ag-theme-alpine-dark .ag-cell": {
+        paddingLeft: 1,
+        paddingRight: 1,
+      },
     },
-    chartContainer: { width: 500, height: 500 },
   });
 
 function PremierLeague(props: IPremierLeague) {

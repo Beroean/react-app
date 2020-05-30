@@ -8,6 +8,9 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 function App() {
+  // TODO: Add vertical tabs within each league for different views: https://material-ui.com/components/tabs/#vertical-tabs
+  // Top 10 scorers bar chart
+  // Comparison of team metrics interactive chart
   const allTabs = ["/", "/esp", "/epl"];
   return (
     <BrowserRouter>
