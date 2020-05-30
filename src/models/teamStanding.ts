@@ -72,11 +72,11 @@ export const columnDefs: ColDef[] = [
     filter: true,
   },
   {
-    headerName: "Pts",
+    headerName: "P",
     field: "points",
     sortable: true,
     filter: true,
-    maxWidth: 37,
+    maxWidth: 29,
   },
   { headerName: "W", field: "won", sortable: true, filter: true, maxWidth: 30 },
   {
