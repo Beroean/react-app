@@ -6,26 +6,21 @@ import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import { columnDefs } from "../../models/teamStanding";
 import { GridReadyEvent } from "ag-grid-community";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    gridRoot: {
-      height: "100%",
-      width: "100%",
-      display: "flex",
-      marginTop: 10,
-      overflow: "hidden",
-    },
-  });
+const styles = (theme: Theme) => createStyles({});
 
 function StandingsGrid(props: IStandingsGridProps) {
   const { classes } = props;
   const defs = columnDefs;
+  const defaultColDef = {
+    flex: 1,
+    minWidth: 75,
+  };
 
-  // TODO: Add grid below to main components
   return (
-    <div className={[classes.gridRoot, "ag-theme-alpine-dark"].join(" ")}>
+    <div className={"ag-theme-alpine-dark"}>
       <AgGridReact
         columnDefs={defs}
+        defaultColDef={defaultColDef}
         rowHeight={35}
         gridAutoHeight
         onGridReady={props.onGridReady}

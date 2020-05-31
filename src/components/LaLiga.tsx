@@ -5,6 +5,8 @@ import footballService from "../services/footballService";
 import { AgGridReact } from "ag-grid-react/lib/agGridReact";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+import { GridReadyEvent } from "ag-grid-community";
+import StandingsGrid from "./common/StandingsGrid";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -41,19 +43,14 @@ function LaLiga(props: ILaLiga) {
     const data = await footballService.getSpanishStandings();
     setStandingsTable(data);
   }
+
+  function onGridReady(params: GridReadyEvent) {
+    params.api.setRowData(standingsTable!.table);
+  }
+
   return (
     <div className={classes.gridRoot}>
-      {standingsTable && (
-        <div className={[classes.gridRoot, "ag-theme-alpine-dark"].join(" ")}>
-          <AgGridReact
-            rowData={standingsTable!.table}
-            columnDefs={defs}
-            defaultColDef={defaultColDef}
-            rowHeight={35}
-            gridAutoHeight
-          />
-        </div>
-      )}
+      {standingsTable && <StandingsGrid onGridReady={onGridReady} />}
     </div>
   );
 }
