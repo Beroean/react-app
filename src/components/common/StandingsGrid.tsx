@@ -3,14 +3,15 @@ import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { columnDefs } from "../../models/teamStanding";
+import { columnDefs, mobileColumnDefs } from "../../models/teamStanding";
 import { GridReadyEvent } from "ag-grid-community";
+import { useWindowSize } from "../hooks/windowSize";
 
 const styles = (theme: Theme) => createStyles({});
 
 function StandingsGrid(props: IStandingsGridProps) {
-  const { classes } = props;
-  const defs = columnDefs;
+  const { isMobile } = useWindowSize();
+  const defs = isMobile ? mobileColumnDefs : columnDefs;
   const defaultColDef = {
     flex: 1,
     minWidth: 75,

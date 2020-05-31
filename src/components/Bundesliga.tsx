@@ -8,8 +8,7 @@ import {
   VictoryContainer,
 } from "victory";
 import footballService from "../services/footballService";
-import { IStandingsTable, columnDefs } from "../models/teamStanding";
-import { AgGridReact } from "ag-grid-react";
+import { IStandingsTable } from "../models/teamStanding";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import { GridReadyEvent } from "ag-grid-community";
@@ -38,11 +37,6 @@ const styles = (theme: Theme) =>
 function Bundesliga(props: IBundesligaProps) {
   const { classes } = props;
   const [standingsTable, setStandingsTable] = useState<IStandingsTable>();
-  const defs = columnDefs;
-  const defaultColDef = {
-    flex: 1,
-    minWidth: 75,
-  };
   useEffect(() => {
     loadCompetetionData();
   }, []);

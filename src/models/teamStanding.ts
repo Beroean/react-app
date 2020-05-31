@@ -61,7 +61,7 @@ export const columnDefs: ColDef[] = [
         '" />'
       );
     },
-    maxWidth: 40,
+    maxWidth: 50,
   },
   {
     headerName: "Name",
@@ -76,42 +76,97 @@ export const columnDefs: ColDef[] = [
     field: "points",
     sortable: true,
     filter: true,
-    maxWidth: 29,
+    maxWidth: 60,
   },
-  { headerName: "W", field: "won", sortable: true, filter: true, maxWidth: 30 },
+  { headerName: "W", field: "won", sortable: true, filter: true, maxWidth: 60 },
   {
     headerName: "L",
     field: "lost",
     sortable: true,
     filter: true,
-    maxWidth: 29,
+    maxWidth: 60,
   },
   {
     headerName: "D",
     field: "draw",
     sortable: true,
     filter: true,
-    maxWidth: 29,
+    maxWidth: 60,
   },
   {
     headerName: "GD",
     field: "goalDifference",
     sortable: true,
     filter: true,
-    maxWidth: 37,
+    maxWidth: 60,
   },
   {
     headerName: "GA",
     field: "goalsAgainst",
     sortable: true,
     filter: true,
-    maxWidth: 37,
+    maxWidth: 60,
   },
   {
     headerName: "MP",
     field: "playedGames",
     sortable: true,
     filter: true,
+    maxWidth: 60,
+  },
+];
+
+export const mobileColumnDefs: ColDef[] = [
+  {
+    headerName: "Crest",
+    valueGetter: function (params: any) {
+      return params.data.team.crestUrl;
+    },
+    cellRenderer: function (params: any) {
+      return (
+        '<img alt="' +
+        params.data.team.name +
+        '" width="30" height="30" src="' +
+        params.data.team.crestUrl +
+        '" />'
+      );
+    },
     maxWidth: 40,
+  },
+  {
+    headerName: "P",
+    field: "points",
+    sortable: true,
+    filter: true,
+    maxWidth: 50,
+  },
+  { headerName: "W", field: "won", sortable: true, filter: true, maxWidth: 50 },
+  {
+    headerName: "L",
+    field: "lost",
+    sortable: true,
+    filter: true,
+    maxWidth: 50,
+  },
+  {
+    headerName: "D",
+    field: "draw",
+    sortable: true,
+    filter: true,
+    maxWidth: 50,
+  },
+  {
+    headerName: "GD",
+    field: "goalDifference",
+    sortable: true,
+    filter: true,
+    maxWidth: 50,
+  },
+  {
+    headerName: "MP",
+    field: "playedGames",
+    sortable: true,
+    filter: true,
+    maxWidth: 50,
   },
 ];
