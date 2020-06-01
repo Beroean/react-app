@@ -49,10 +49,12 @@ function Bundesliga(props: IBundesligaProps) {
   function onGridReady(params: GridReadyEvent) {
     params.api.setRowData(standingsTable!.table);
   }
-
+  const allTabs = ["/standings", "/chart1", "/chart2"];
   return (
-    <div className={classes.gridRoot}>
-      {standingsTable && <StandingsGrid onGridReady={onGridReady} />}
+    <div>
+      <div className={classes.gridRoot}>
+        {standingsTable && <StandingsGrid onGridReady={onGridReady} />}
+      </div>
       {false && (
         <div className={classes.chartRoot}>
           <VictoryChart
