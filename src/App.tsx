@@ -6,6 +6,7 @@ import LaLiga from "./components/LaLiga";
 import "./App.css";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import HomeIcon from "@material-ui/icons/Home";
 
 function App() {
   // TODO: Give top header a different theme from subheader. Replace league names with icons
@@ -22,25 +23,43 @@ function App() {
             <Fragment>
               <Tabs value={"/" + location.pathname.split("/")[1]} centered>
                 <Tab
-                  label="Home"
+                  icon={<HomeIcon fontSize="large" color="primary" />}
                   value={allTabs[0]}
                   component={Link}
                   to={allTabs[0]}
                 />
                 <Tab
-                  label="Bundesliga"
+                  icon={
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/800px-Bundesliga_logo_%282017%29.svg.png"
+                      width="60"
+                      height="60"
+                    ></img>
+                  }
                   value={allTabs[1]}
                   component={Link}
                   to={allTabs[1]}
                 />
                 <Tab
-                  label="La Liga"
+                  icon={
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/3/35/La_Liga.png"
+                      width="70"
+                      height="70"
+                    ></img>
+                  }
                   value={allTabs[2]}
                   component={Link}
                   to={allTabs[2]}
                 />
                 <Tab
-                  label="Premier League"
+                  icon={
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1920px-Premier_League_Logo.svg.png"
+                      width="110"
+                      height="50"
+                    ></img>
+                  }
                   value={allTabs[3]}
                   component={Link}
                   to={allTabs[3]}
