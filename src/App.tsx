@@ -7,6 +7,7 @@ import "./App.css";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import HomeIcon from "@material-ui/icons/Home";
+import Home from "./components/Home";
 
 function App() {
   // TODO: Give top header a different theme from subheader. Replace league names with icons
@@ -67,7 +68,7 @@ function App() {
               </Tabs>
               <Switch>
                 <Route exact path={allTabs[0]}>
-                  <div>Home</div>
+                  <Home />
                 </Route>
                 <Route path={allTabs[1]}>
                   <Bundesliga />

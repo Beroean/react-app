@@ -7,6 +7,30 @@ export interface IStandingsResponse {
   standings: IStandingsTable[];
 }
 
+export interface IScorer {
+  numberOfGoals: number;
+  player: IPlayer;
+  team: ITeam;
+}
+
+export interface IPlayer {
+  countryOfBirth: string;
+  dateOfBirth: string;
+  firstName: string;
+  id: number;
+  lastName: string;
+  name: string;
+  position: string;
+  nationality: string;
+  shirtNumber: number;
+}
+
+export interface IScorersResponse {
+  competition: ICompetition;
+  season: ISeason;
+  scorers: IScorer[];
+}
+
 export interface ICompetition {
   code: string;
   id: number;

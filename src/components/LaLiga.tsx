@@ -7,7 +7,7 @@ import {
   Tabs,
   Tab,
 } from "@material-ui/core";
-import { IStandingsTable } from "../models/teamStanding";
+import { IStandingsTable, IScorer } from "../models/teamStanding";
 import footballService from "../services/footballService";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
@@ -37,6 +37,7 @@ const styles = (theme: Theme) =>
 function LaLiga(props: ILaLiga) {
   const { classes } = props;
   const [standingsTable, setStandingsTable] = useState<IStandingsTable>();
+  const [topScorers, setTopScorers] = useState<IScorer[]>();
   const { path, url } = useRouteMatch();
   const [value, setValue] = useState<string>(url);
   useEffect(() => {
@@ -44,8 +45,10 @@ function LaLiga(props: ILaLiga) {
   }, []);
 
   async function loadCompetetionData() {
-    const data = await footballService.getSpanishStandings();
-    setStandingsTable(data);
+    const standingsData = await footballService.getSpanishStandings();
+    const scorersData = await footballService.getSpanishScorers();
+    setStandingsTable(standingsData);
+    setTopScorers(scorersData);
   }
 
   function onGridReady(params: GridReadyEvent) {
