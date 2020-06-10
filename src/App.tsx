@@ -24,7 +24,7 @@ function App() {
             <Fragment>
               <Tabs value={"/" + location.pathname.split("/")[1]} centered>
                 <Tab
-                  icon={<HomeIcon fontSize="large" color="primary" />}
+                  icon={<HomeIcon fontSize="large" />}
                   value={allTabs[0]}
                   component={Link}
                   to={allTabs[0]}
@@ -33,8 +33,8 @@ function App() {
                   icon={
                     <img
                       src="https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/800px-Bundesliga_logo_%282017%29.svg.png"
-                      width="60"
-                      height="60"
+                      width="50"
+                      height="50"
                     ></img>
                   }
                   value={allTabs[1]}
@@ -45,8 +45,8 @@ function App() {
                   icon={
                     <img
                       src="https://upload.wikimedia.org/wikipedia/en/3/35/La_Liga.png"
-                      width="70"
-                      height="70"
+                      width="50"
+                      height="50"
                     ></img>
                   }
                   value={allTabs[2]}
@@ -57,7 +57,7 @@ function App() {
                   icon={
                     <img
                       src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1920px-Premier_League_Logo.svg.png"
-                      width="110"
+                      width="100"
                       height="50"
                     ></img>
                   }

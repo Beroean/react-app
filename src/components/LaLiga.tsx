@@ -14,6 +14,7 @@ import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import { GridReadyEvent } from "ag-grid-community";
 import StandingsGrid from "./common/StandingsGrid";
 import { Route, Link, Switch, useRouteMatch } from "react-router-dom";
+import { VictoryChart, VictoryTheme, VictoryBar } from "victory";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -32,6 +33,7 @@ const styles = (theme: Theme) =>
         paddingRight: 1,
       },
     },
+    chartRoot: { display: "flex", flexWrap: "wrap", justifyContent: "center" },
   });
 
 function LaLiga(props: ILaLiga) {
@@ -48,7 +50,9 @@ function LaLiga(props: ILaLiga) {
     const standingsData = await footballService.getSpanishStandings();
     const scorersData = await footballService.getSpanishScorers();
     setStandingsTable(standingsData);
-    setTopScorers(scorersData);
+    setTopScorers(
+      scorersData.sort((x, y) => x.numberOfGoals - y.numberOfGoals)
+    );
   }
 
   function onGridReady(params: GridReadyEvent) {
@@ -78,7 +82,22 @@ function LaLiga(props: ILaLiga) {
           </div>
         </Route>
         <Route path={path + allTabs[1]}>
-          <div className={classes.gridRoot}>sup</div>
+          {topScorers && (
+            <div className={classes.chartRoot}>
+              <VictoryChart domainPadding={5} height={300} width={500}>
+                <VictoryBar
+                  horizontal
+                  style={{
+                    data: { fill: "#c43a31" },
+                  }}
+                  data={topScorers}
+                  y="numberOfGoals"
+                  x="player.name"
+                  labels={({ datum }) => datum.player.name}
+                />
+              </VictoryChart>
+            </div>
+          )}
         </Route>
       </Switch>
     </div>

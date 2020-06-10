@@ -57,7 +57,7 @@ function Bundesliga(props: IBundesligaProps) {
       </div>
       {false && (
         <div className={classes.chartRoot}>
-          <VictoryChart
+          {/* <VictoryChart
             theme={VictoryTheme.material}
             domainPadding={30}
             containerComponent={<VictoryContainer responsive={false} />}
@@ -76,7 +76,7 @@ function Bundesliga(props: IBundesligaProps) {
               y="goalsFor"
               labels={({ datum }) => datum.team.name}
             />
-          </VictoryChart>
+          </VictoryChart> */}
         </div>
       )}
     </div>
