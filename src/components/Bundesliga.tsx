@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryAxis,
-  VictoryTheme,
-  VictoryContainer,
-} from "victory";
 import footballService from "../services/footballService";
 import { IStandingsTable } from "../models/teamStanding";
 import "ag-grid-community/dist/styles/ag-grid.css";

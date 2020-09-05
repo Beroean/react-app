@@ -12,6 +12,8 @@ import Home from "./components/Home";
 function App() {
   // TODO: Give top header a different theme from subheader
   // TODO: Add content to Home page
+  // TODO: Integrate with TMDB and split site into two sections: 1) football 2) movies
+  // https://www.themoviedb.org/documentation/api
   // Top 10 scorers bar chart
   // Comparison of team metrics interactive chart
   const allTabs = ["/", "/bl", "/esp", "/epl"];
