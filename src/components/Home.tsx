@@ -17,6 +17,9 @@ import StandingsGrid from "./common/StandingsGrid";
 const styles = (theme: Theme) =>
   createStyles({
     root: {
+      ...theme.typography.button,
+      backgroundColor: theme.palette.background.paper,
+      padding: theme.spacing(1),
       height: "100%",
       width: "100%",
       display: "flex",
@@ -27,9 +30,7 @@ const styles = (theme: Theme) =>
 
 function Home(props: IHome) {
   const { classes } = props;
-  return (
-    <div className={classes.root}>This has been a successful unveiling</div>
-  );
+  return <div className={classes.root}>Feeling bored so I made this</div>;
 }
 
 interface IHome extends WithStyles<typeof styles> {}

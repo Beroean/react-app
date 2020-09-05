@@ -10,7 +10,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import Home from "./components/Home";
 
 function App() {
-  // TODO: Give top header a different theme from subheader. Replace league names with icons
+  // TODO: Give top header a different theme from subheader
   // TODO: Add content to Home page
   // Top 10 scorers bar chart
   // Comparison of team metrics interactive chart

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import {
   WithStyles,
   createStyles,
@@ -14,7 +14,8 @@ import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import { GridReadyEvent } from "ag-grid-community";
 import StandingsGrid from "./common/StandingsGrid";
 import { Route, Link, Switch, useRouteMatch } from "react-router-dom";
-import { VictoryChart, VictoryTheme, VictoryBar } from "victory";
+import HighchartsReact from "highcharts-react-official";
+import * as Highcharts from "highcharts";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -45,6 +46,76 @@ function LaLiga(props: ILaLiga) {
   useEffect(() => {
     loadCompetetionData();
   }, []);
+
+  const options = {
+    chart: {
+      type: "bar",
+    },
+    title: {
+      text: "Top Scorers",
+    },
+    subtitle: {
+      text: "Broken down by a bunch of stats",
+    },
+    xAxis: {
+      categories: ["Africa", "America", "Asia", "Europe", "Oceania"],
+      title: {
+        text: null,
+      },
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Goals",
+        align: "high",
+      },
+      labels: {
+        overflow: "justify",
+      },
+    },
+    tooltip: {
+      valueSuffix: " goals",
+    },
+    plotOptions: {
+      bar: {
+        dataLabels: {
+          enabled: true,
+        },
+      },
+    },
+    legend: {
+      layout: "vertical",
+      align: "right",
+      verticalAlign: "top",
+      x: -40,
+      y: 80,
+      floating: true,
+      borderWidth: 1,
+      backgroundColor: "#FFFFFF",
+      shadow: true,
+    },
+    credits: {
+      enabled: false,
+    },
+    series: [
+      {
+        name: "Year 1800",
+        data: [107, 31, 635, 203, 2],
+      },
+      {
+        name: "Year 1900",
+        data: [133, 156, 947, 408, 6],
+      },
+      {
+        name: "Year 2000",
+        data: [814, 841, 3714, 727, 31],
+      },
+      {
+        name: "Year 2016",
+        data: [1216, 1001, 4436, 738, 40],
+      },
+    ],
+  };
 
   async function loadCompetetionData() {
     const standingsData = await footballService.getSpanishStandings();
@@ -84,18 +155,7 @@ function LaLiga(props: ILaLiga) {
         <Route path={path + allTabs[1]}>
           {topScorers && (
             <div className={classes.chartRoot}>
-              <VictoryChart domainPadding={5} height={300} width={500}>
-                <VictoryBar
-                  horizontal
-                  style={{
-                    data: { fill: "#c43a31" },
-                  }}
-                  data={topScorers}
-                  y="numberOfGoals"
-                  x="player.name"
-                  labels={({ datum }) => datum.player.name}
-                />
-              </VictoryChart>
+              <HighchartsReact highcharts={Highcharts} options={options} />
             </div>
           )}
         </Route>
