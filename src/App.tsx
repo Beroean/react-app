@@ -35,8 +35,8 @@ function App() {
                   icon={
                     <img
                       src="https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/800px-Bundesliga_logo_%282017%29.svg.png"
-                      width="50"
-                      height="50"
+                      width="40"
+                      height="40"
                     ></img>
                   }
                   value={allTabs[1]}
@@ -47,8 +47,8 @@ function App() {
                   icon={
                     <img
                       src="https://upload.wikimedia.org/wikipedia/en/3/35/La_Liga.png"
-                      width="50"
-                      height="50"
+                      width="40"
+                      height="40"
                     ></img>
                   }
                   value={allTabs[2]}
@@ -59,8 +59,8 @@ function App() {
                   icon={
                     <img
                       src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1920px-Premier_League_Logo.svg.png"
-                      width="100"
-                      height="50"
+                      width="80"
+                      height="40"
                     ></img>
                   }
                   value={allTabs[3]}

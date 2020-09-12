@@ -16,6 +16,7 @@ import StandingsGrid from "./common/StandingsGrid";
 import { Route, Link, Switch, useRouteMatch } from "react-router-dom";
 import HighchartsReact from "highcharts-react-official";
 import * as Highcharts from "highcharts";
+import { BarChartOptions } from "./common/BarChartOptions";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -41,88 +42,32 @@ function LaLiga(props: ILaLiga) {
   const { classes } = props;
   const [standingsTable, setStandingsTable] = useState<IStandingsTable>();
   const [topScorers, setTopScorers] = useState<IScorer[]>();
+  const [chartOptions, setChartOptions] = useState<any>();
   const { path, url } = useRouteMatch();
   const [value, setValue] = useState<string>(url);
   useEffect(() => {
     loadCompetetionData();
   }, []);
 
-  const options = {
-    chart: {
-      type: "bar",
-    },
-    title: {
-      text: "Top Scorers",
-    },
-    subtitle: {
-      text: "Broken down by a bunch of stats",
-    },
-    xAxis: {
-      categories: ["Africa", "America", "Asia", "Europe", "Oceania"],
-      title: {
-        text: null,
-      },
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: "Goals",
-        align: "high",
-      },
-      labels: {
-        overflow: "justify",
-      },
-    },
-    tooltip: {
-      valueSuffix: " goals",
-    },
-    plotOptions: {
-      bar: {
-        dataLabels: {
-          enabled: true,
-        },
-      },
-    },
-    legend: {
-      layout: "vertical",
-      align: "right",
-      verticalAlign: "top",
-      x: -40,
-      y: 80,
-      floating: true,
-      borderWidth: 1,
-      backgroundColor: "#FFFFFF",
-      shadow: true,
-    },
-    credits: {
-      enabled: false,
-    },
-    series: [
-      {
-        name: "Year 1800",
-        data: [107, 31, 635, 203, 2],
-      },
-      {
-        name: "Year 1900",
-        data: [133, 156, 947, 408, 6],
-      },
-      {
-        name: "Year 2000",
-        data: [814, 841, 3714, 727, 31],
-      },
-      {
-        name: "Year 2016",
-        data: [1216, 1001, 4436, 738, 40],
-      },
-    ],
-  };
+  useEffect(() => {
+    if (topScorers) {
+      const options = { ...BarChartOptions };
+      options.xAxis!.categories = [];
+      options.series![0].data = [];
+      topScorers.forEach((scorer) => {
+        options.xAxis!.categories.push(scorer.player.name);
+        options.series![0].data.push(scorer.numberOfGoals);
+      });
+      setChartOptions(options);
+    }
+  }, [topScorers]);
 
   async function loadCompetetionData() {
     const standingsData = await footballService.getSpanishStandings();
     const scorersData = await footballService.getSpanishScorers();
     setStandingsTable(standingsData);
     setTopScorers(
-      scorersData.sort((x, y) => x.numberOfGoals - y.numberOfGoals)
+      scorersData.sort((x, y) => y.numberOfGoals - x.numberOfGoals)
     );
   }
 
@@ -134,13 +79,13 @@ function LaLiga(props: ILaLiga) {
     setValue(newValue);
   }
 
-  const allTabs = ["/standings", "/chart1", "/chart2"];
+  const allTabs = ["/standings", "/scorers"];
   return (
     <div>
       <Tabs value={value} centered onChange={handleChange}>
         <Tab label="Standings" component={Link} value={url} to={url} />
         <Tab
-          label="Chart 1"
+          label="Top Scorers"
           component={Link}
           to={url + allTabs[1]}
           value={url + allTabs[1]}
@@ -155,7 +100,7 @@ function LaLiga(props: ILaLiga) {
         <Route path={path + allTabs[1]}>
           {topScorers && (
             <div className={classes.chartRoot}>
-              <HighchartsReact highcharts={Highcharts} options={options} />
+              <HighchartsReact highcharts={Highcharts} options={chartOptions} />
             </div>
           )}
         </Route>
