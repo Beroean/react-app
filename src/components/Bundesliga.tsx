@@ -13,13 +13,24 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import { GridReadyEvent } from "ag-grid-community";
 import StandingsGrid from "./common/StandingsGrid";
-import { useRouteMatch, Switch, Route, Link } from "react-router-dom";
+import {
+  useRouteMatch,
+  Switch,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import { BarChartOptions } from "./common/BarChartOptions";
 
 const styles = (theme: Theme) =>
   createStyles({
+    root: {
+      "& .MuiTabs-root": {
+        backgroundColor: "inherit !important",
+      },
+    },
     gridRoot: {
       height: "100%",
       width: "100%",
@@ -44,7 +55,8 @@ function Bundesliga(props: IBundesligaProps) {
   const [topScorers, setTopScorers] = useState<IScorer[]>();
   const [chartOptions, setChartOptions] = useState<any>();
   const { path, url } = useRouteMatch();
-  const [value, setValue] = useState<string>(url);
+  const { pathname } = useLocation();
+  const [value, setValue] = useState<string>(pathname);
   useEffect(() => {
     loadCompetetionData();
   }, []);
@@ -81,7 +93,7 @@ function Bundesliga(props: IBundesligaProps) {
 
   const allTabs = ["/standings", "/scorers"];
   return (
-    <div>
+    <div className={classes.root}>
       <Tabs value={value} centered onChange={handleChange}>
         <Tab label="Standings" component={Link} value={url} to={url} />
         <Tab

@@ -8,18 +8,25 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import HomeIcon from "@material-ui/icons/Home";
 import Home from "./components/Home";
+import { WithStyles, Theme, createStyles, withStyles } from "@material-ui/core";
 
-function App() {
-  // TODO: Give top header a different theme from subheader
-  // TODO: Add content to Home page
+const styles = (theme: Theme) =>
+  createStyles({
+    app: {
+      "& .MuiTabs-root": {
+        backgroundColor: theme.palette.grey[500],
+      },
+    },
+  });
+
+function App(props: IAppProps) {
   // TODO: Integrate with TMDB and split site into two sections: 1) football 2) movies
   // https://www.themoviedb.org/documentation/api
-  // Top 10 scorers bar chart
-  // Comparison of team metrics interactive chart
+  const { classes } = props;
   const allTabs = ["/", "/bl", "/esp", "/epl"];
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className={classes.app}>
         <Route
           path="/"
           render={({ location }) => (
@@ -90,4 +97,6 @@ function App() {
   );
 }
 
-export default App;
+interface IAppProps extends WithStyles<typeof styles> {}
+
+export default withStyles(styles)(App);
