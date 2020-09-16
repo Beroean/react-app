@@ -4,7 +4,7 @@ import footballService from "../services/footballService";
 import { IStandingsTable } from "../models/teamStanding";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import weatherService from "../services/weatherService";
+import surveyService from "../services/surveyService";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -34,14 +34,14 @@ const styles = (theme: Theme) =>
 
 function Home(props: IHome) {
   const { classes } = props;
-  const [weatherData, setWeatherData] = useState<string>();
+  const [surveyData, setSurveyData] = useState<string>();
   useEffect(() => {
-    loadWeather();
+    loadSurveys();
   }, []);
 
-  async function loadWeather() {
-    const response = await weatherService.getWeather();
-    setWeatherData(JSON.stringify(response));
+  async function loadSurveys() {
+    const response = await surveyService.getSurveys();
+    setSurveyData(JSON.stringify(response));
   }
 
   return (
@@ -50,7 +50,7 @@ function Home(props: IHome) {
       <div className={classes.subtitle}>
         Response below comes from an ASP.NET Core app in azure
       </div>
-      <div>{weatherData}</div>
+      <div>{surveyData}</div>
     </div>
   );
 }
