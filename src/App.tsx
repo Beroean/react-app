@@ -10,7 +10,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import Home from "./components/Home";
 import { WithStyles, Theme, createStyles, withStyles } from "@material-ui/core";
 import Germany from "./components/common/flags/Germany.png";
-import UK from "./components/common/flags/United_Kingdom.png";
+import England from "./components/common/flags/England.png";
 import Spain from "./components/common/flags/Spain.png";
 
 const styles = (theme: Theme) =>
@@ -72,8 +72,8 @@ function App(props: IAppProps) {
                 <Tab
                   icon={
                     <img
-                      src={UK}
-                      width="60"
+                      src={England}
+                      width="70"
                       height="40"
                       alt="Premier League"
                       title="Premier League"
