@@ -9,12 +9,15 @@ import Tab from "@material-ui/core/Tab";
 import HomeIcon from "@material-ui/icons/Home";
 import Home from "./components/Home";
 import { WithStyles, Theme, createStyles, withStyles } from "@material-ui/core";
+import Germany from "./components/common/flags/Germany.png";
+import UK from "./components/common/flags/United_Kingdom.png";
+import Spain from "./components/common/flags/Spain.png";
 
 const styles = (theme: Theme) =>
   createStyles({
     app: {
       "& .MuiTabs-root": {
-        backgroundColor: theme.palette.grey[500],
+        backgroundColor: theme.palette.grey[900],
       },
     },
   });
@@ -33,7 +36,7 @@ function App(props: IAppProps) {
             <Fragment>
               <Tabs value={"/" + location.pathname.split("/")[1]} centered>
                 <Tab
-                  icon={<HomeIcon fontSize="large" />}
+                  icon={<HomeIcon fontSize="large" htmlColor="white" />}
                   value={allTabs[0]}
                   component={Link}
                   to={allTabs[0]}
@@ -41,9 +44,11 @@ function App(props: IAppProps) {
                 <Tab
                   icon={
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/800px-Bundesliga_logo_%282017%29.svg.png"
-                      width="40"
+                      src={Germany}
+                      width="60"
                       height="40"
+                      alt="Bundesliga"
+                      title="Bundesliga"
                     ></img>
                   }
                   value={allTabs[1]}
@@ -53,9 +58,11 @@ function App(props: IAppProps) {
                 <Tab
                   icon={
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/en/3/35/La_Liga.png"
-                      width="40"
+                      src={Spain}
+                      width="60"
                       height="40"
+                      alt="La Liga"
+                      title="La Liga"
                     ></img>
                   }
                   value={allTabs[2]}
@@ -65,9 +72,11 @@ function App(props: IAppProps) {
                 <Tab
                   icon={
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1920px-Premier_League_Logo.svg.png"
-                      width="80"
+                      src={UK}
+                      width="60"
                       height="40"
+                      alt="Premier League"
+                      title="Premier League"
                     ></img>
                   }
                   value={allTabs[3]}
