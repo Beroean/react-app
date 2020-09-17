@@ -22,6 +22,7 @@ import {
 } from "react-router-dom";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
+import darkUnica from "highcharts/themes/dark-unica";
 import { BarChartOptions } from "./common/BarChartOptions";
 
 const styles = (theme: Theme) =>
@@ -112,7 +113,10 @@ function Bundesliga(props: IBundesligaProps) {
         <Route path={path + allTabs[1]}>
           {topScorers && (
             <div className={classes.chartRoot}>
-              <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+              <HighchartsReact
+                highcharts={darkUnica(Highcharts)}
+                options={chartOptions}
+              />
             </div>
           )}
         </Route>
