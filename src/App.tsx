@@ -22,7 +22,7 @@ const styles = (theme: Theme) =>
     app: {
       "& .MuiTabs-root": {
         backgroundColor: theme.palette.grey[900],
-        boxShadow: "0px 2px 4px -1px",
+        boxShadow: "0px 0px 1px 0px",
       },
     },
     flag: {
