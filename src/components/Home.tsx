@@ -8,7 +8,6 @@ const styles = (theme: Theme) =>
   createStyles({
     title: {
       ...theme.typography.button,
-      backgroundColor: theme.palette.background.paper,
       fontSize: theme.typography.h4.fontSize,
       height: "100%",
       width: "100%",
@@ -18,7 +17,6 @@ const styles = (theme: Theme) =>
     },
     subtitle: {
       ...theme.typography.button,
-      backgroundColor: theme.palette.background.paper,
       fontSize: theme.typography.h6.fontSize,
       height: "100%",
       width: "100%",

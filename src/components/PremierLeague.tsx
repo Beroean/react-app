@@ -29,7 +29,8 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {
       "& .MuiTabs-root": {
-        backgroundColor: "inherit !important",
+        backgroundColor: theme.palette.grey[700],
+        color: "white",
       },
     },
     gridRoot: {
@@ -37,7 +38,6 @@ const styles = (theme: Theme) =>
       width: "100%",
       display: "flex",
       overflow: "hidden",
-      marginTop: 10,
       "& .ag-theme-alpine-dark .ag-header-cell": {
         paddingLeft: 1,
         paddingRight: 1,

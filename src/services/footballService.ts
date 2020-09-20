@@ -30,6 +30,40 @@ const footballService = {
       return response.data.scorers;
     });
   },
+  getFrenchStandings: (): Promise<IStandingsTable> => {
+    return Axios.get(
+      "https://api.football-data.org/v2/competitions/FL1/standings",
+      getHeaders()
+    ).then(
+      (response: AxiosResponse<IStandingsResponse>) =>
+        response.data.standings[0]
+    );
+  },
+  getFrenchScorers: (): Promise<IScorer[]> => {
+    return Axios.get(
+      "https://api.football-data.org/v2/competitions/FL1/scorers",
+      getHeaders()
+    ).then((response: AxiosResponse<IScorersResponse>) => {
+      return response.data.scorers;
+    });
+  },
+  getItalianStandings: (): Promise<IStandingsTable> => {
+    return Axios.get(
+      "https://api.football-data.org/v2/competitions/SA/standings",
+      getHeaders()
+    ).then(
+      (response: AxiosResponse<IStandingsResponse>) =>
+        response.data.standings[0]
+    );
+  },
+  getItalianScorers: (): Promise<IScorer[]> => {
+    return Axios.get(
+      "https://api.football-data.org/v2/competitions/SA/scorers",
+      getHeaders()
+    ).then((response: AxiosResponse<IScorersResponse>) => {
+      return response.data.scorers;
+    });
+  },
   getEnglishStandings: (): Promise<IStandingsTable> => {
     return Axios.get(
       "https://api.football-data.org/v2/competitions/PL/standings",

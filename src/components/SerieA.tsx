@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   WithStyles,
   createStyles,
@@ -7,17 +7,17 @@ import {
   Tabs,
   Tab,
 } from "@material-ui/core";
-import footballService from "../services/footballService";
 import { IStandingsTable, IScorer } from "../models/teamStanding";
+import footballService from "../services/footballService";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import { GridReadyEvent } from "ag-grid-community";
 import StandingsGrid from "./common/StandingsGrid";
 import {
-  useRouteMatch,
-  Switch,
   Route,
   Link,
+  Switch,
+  useRouteMatch,
   useLocation,
 } from "react-router-dom";
 import HighchartsReact from "highcharts-react-official";
@@ -50,7 +50,7 @@ const styles = (theme: Theme) =>
     chartRoot: { display: "flex", flexWrap: "wrap", justifyContent: "center" },
   });
 
-function Bundesliga(props: IBundesligaProps) {
+function SerieA(props: ISerieA) {
   const { classes } = props;
   const [standingsTable, setStandingsTable] = useState<IStandingsTable>();
   const [topScorers, setTopScorers] = useState<IScorer[]>();
@@ -76,9 +76,9 @@ function Bundesliga(props: IBundesligaProps) {
   }, [topScorers]);
 
   async function loadCompetetionData() {
-    const data = await footballService.getGermanStandings();
-    setStandingsTable(data);
-    const scorersData = await footballService.getGermanScorers();
+    const standingsData = await footballService.getItalianStandings();
+    const scorersData = await footballService.getItalianScorers();
+    setStandingsTable(standingsData);
     setTopScorers(
       scorersData.sort((x, y) => y.numberOfGoals - x.numberOfGoals)
     );
@@ -125,6 +125,6 @@ function Bundesliga(props: IBundesligaProps) {
   );
 }
 
-interface IBundesligaProps extends WithStyles<typeof styles> {}
+interface ISerieA extends WithStyles<typeof styles> {}
 
-export default withStyles(styles)(Bundesliga);
+export default withStyles(styles)(SerieA);
