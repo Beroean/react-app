@@ -30,7 +30,7 @@ function Home(props: IHome) {
   const { classes } = props;
   const [surveyData, setSurveyData] = useState<string>();
   useEffect(() => {
-    loadSurveys();
+    // loadSurveys();
   }, []);
 
   async function loadSurveys() {
@@ -41,10 +41,6 @@ function Home(props: IHome) {
   return (
     <div>
       <div className={classes.title}>Feeling bored so I made this</div>
-      <div className={classes.subtitle}>
-        Response below comes from an ASP.NET Core app in azure
-      </div>
-      <div>{surveyData}</div>
     </div>
   );
 }

@@ -24,6 +24,14 @@ const styles = (theme: Theme) =>
         backgroundColor: theme.palette.grey[900],
       },
     },
+    flag: {
+      maxHeight: "40px",
+      maxWidth: "60px",
+    },
+    englandFlag: {
+      maxHeight: "40px",
+      maxWidth: "70px",
+    },
   });
 
 function App(props: IAppProps) {
@@ -36,7 +44,12 @@ function App(props: IAppProps) {
           path="/"
           render={({ location }) => (
             <Fragment>
-              <Tabs value={"/" + location.pathname.split("/")[1]} centered>
+              <Tabs
+                value={"/" + location.pathname.split("/")[1]}
+                centered
+                variant="scrollable"
+                scrollButtons="on"
+              >
                 <Tab
                   icon={<HomeIcon fontSize="large" htmlColor="white" />}
                   value={allTabs[0]}
@@ -47,10 +60,9 @@ function App(props: IAppProps) {
                   icon={
                     <img
                       src={Germany}
-                      width="60"
-                      height="40"
                       alt="Bundesliga"
                       title="Bundesliga"
+                      className={classes.flag}
                     ></img>
                   }
                   value={allTabs[1]}
@@ -61,10 +73,9 @@ function App(props: IAppProps) {
                   icon={
                     <img
                       src={Spain}
-                      width="60"
-                      height="40"
                       alt="La Liga"
                       title="La Liga"
+                      className={classes.flag}
                     ></img>
                   }
                   value={allTabs[2]}
@@ -75,10 +86,9 @@ function App(props: IAppProps) {
                   icon={
                     <img
                       src={England}
-                      width="70"
-                      height="40"
                       alt="Premier League"
                       title="Premier League"
+                      className={classes.englandFlag}
                     ></img>
                   }
                   value={allTabs[3]}
@@ -89,10 +99,9 @@ function App(props: IAppProps) {
                   icon={
                     <img
                       src={France}
-                      width="60"
-                      height="40"
                       alt="Ligue 1"
                       title="Ligue 1"
+                      className={classes.flag}
                     ></img>
                   }
                   value={allTabs[4]}
@@ -103,10 +112,9 @@ function App(props: IAppProps) {
                   icon={
                     <img
                       src={Italy}
-                      width="60"
-                      height="40"
                       alt="Serie A"
                       title="Serie A"
+                      className={classes.flag}
                     ></img>
                   }
                   value={allTabs[5]}
