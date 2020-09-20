@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
-import footballService from "../services/footballService";
-import { IStandingsTable } from "../models/teamStanding";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import surveyService from "../services/surveyService";
