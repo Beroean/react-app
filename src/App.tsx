@@ -23,8 +23,6 @@ const styles = (theme: Theme) =>
   });
 
 function App(props: IAppProps) {
-  // TODO: Integrate with TMDB and split site into two sections: 1) football 2) movies
-  // https://www.themoviedb.org/documentation/api
   const { classes } = props;
   const allTabs = ["/", "/bl", "/esp", "/epl"];
   return (
