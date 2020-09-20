@@ -46,7 +46,6 @@ function App(props: IAppProps) {
             <Fragment>
               <Tabs
                 value={"/" + location.pathname.split("/")[1]}
-                centered
                 variant="scrollable"
                 scrollButtons="on"
               >
