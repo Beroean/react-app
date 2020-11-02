@@ -96,8 +96,8 @@ export const columnDefs: ColDef[] = [
     filter: true,
   },
   {
-    headerName: "P",
-    field: "points",
+    headerName: "MP",
+    field: "playedGames",
     sortable: true,
     filter: true,
     maxWidth: 60,
@@ -132,8 +132,8 @@ export const columnDefs: ColDef[] = [
     maxWidth: 60,
   },
   {
-    headerName: "MP",
-    field: "playedGames",
+    headerName: "P",
+    field: "points",
     sortable: true,
     filter: true,
     maxWidth: 60,
