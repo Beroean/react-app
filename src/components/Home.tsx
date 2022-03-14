@@ -40,7 +40,9 @@ function Home(props: IHome) {
 
   return (
     <div>
-      <div className={classes.title}>Feeling bored so I made this</div>
+      <div className={classes.title}>This app displays the real-time standings/rankings in the top 5 football leagues in Europe.</div>
+      <div className={classes.title}>You can also view the top scorers in those leagues.</div>
+      <div className={classes.title}>Click one of the league icons/tabs above to view the current standings in that league.</div>
     </div>
   );
 }
