@@ -59,15 +59,15 @@ function App(props: IAppProps) {
                 <Tab
                   icon={
                     <img
-                      src={Germany}
-                      alt="Bundesliga"
-                      title="Bundesliga"
-                      className={classes.flag}
+                      src={England}
+                      alt="Premier League"
+                      title="Premier League"
+                      className={classes.englandFlag}
                     ></img>
                   }
-                  value={allTabs[1]}
+                  value={allTabs[3]}
                   component={Link}
-                  to={allTabs[1]}
+                  to={allTabs[3]}
                 />
                 <Tab
                   icon={
@@ -85,15 +85,28 @@ function App(props: IAppProps) {
                 <Tab
                   icon={
                     <img
-                      src={England}
-                      alt="Premier League"
-                      title="Premier League"
-                      className={classes.englandFlag}
+                      src={Italy}
+                      alt="Serie A"
+                      title="Serie A"
+                      className={classes.flag}
                     ></img>
                   }
-                  value={allTabs[3]}
+                  value={allTabs[5]}
                   component={Link}
-                  to={allTabs[3]}
+                  to={allTabs[5]}
+                />
+                <Tab
+                  icon={
+                    <img
+                      src={Germany}
+                      alt="Bundesliga"
+                      title="Bundesliga"
+                      className={classes.flag}
+                    ></img>
+                  }
+                  value={allTabs[1]}
+                  component={Link}
+                  to={allTabs[1]}
                 />
                 <Tab
                   icon={
@@ -108,19 +121,7 @@ function App(props: IAppProps) {
                   component={Link}
                   to={allTabs[4]}
                 />
-                <Tab
-                  icon={
-                    <img
-                      src={Italy}
-                      alt="Serie A"
-                      title="Serie A"
-                      className={classes.flag}
-                    ></img>
-                  }
-                  value={allTabs[5]}
-                  component={Link}
-                  to={allTabs[5]}
-                />
+                
               </Tabs>
               <Switch>
                 <Route exact path={allTabs[0]}>
